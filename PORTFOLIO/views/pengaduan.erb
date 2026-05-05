@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buat Pengaduan</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#f5f7fb}
+
+/* NAVBAR */
+nav{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 8%;background:#fff;position:fixed;width:100%;top:0;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:99
+}
+nav h1{color:#4f46e5;font-size:22px;font-weight:700}
+nav a{text-decoration:none;color:#334155;margin-left:20px}
+
+/* HERO */
+.hero{
+    margin-top:80px;
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:#fff;padding:70px 8% 120px;
+    text-align:center;position:relative
+}
+.hero h2{font-size:36px;margin-bottom:10px}
+.hero p{color:#e0e7ff}
+
+/* WAVE */
+.wave{
+    position:absolute;bottom:-1px;left:0;width:100%
+}
+
+/* CARD FORM */
+.card{
+    background:#fff;max-width:800px;margin:-80px auto 60px;
+    padding:40px;border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1)
+}
+.card h3{text-align:center;margin-bottom:25px;color:#334155}
+
+.form-row{display:flex;gap:20px}
+.form-group{margin-bottom:18px;flex:1}
+.form-group label{display:block;margin-bottom:6px;font-weight:600;color:#334155}
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;padding:12px;border-radius:8px;
+    border:1px solid #cbd5e1;font-size:14px
+}
+.form-group textarea{resize:vertical}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    outline:none;border-color:#4f46e5;
+    box-shadow:0 0 5px #4f46e5
+}
+
+.btn-submit{
+    width:100%;padding:14px;background:#4f46e5;
+    border:none;color:#fff;border-radius:8px;
+    font-size:16px;cursor:pointer
+}
+.btn-submit:hover{background:#4338ca}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+    .form-row{flex-direction:column}
+}
+
+footer{
+    text-align:center;padding:30px;color:#64748b
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <h1>Lapor Desa</h1>
+    <div>
+        <a href="/">Home</a>
+        <a href="/">Logout</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h2>Form Pengaduan Masyarakat</h2>
+    <p>Isi laporan Anda dengan lengkap agar dapat diproses dengan cepat</p>
+
+    <svg class="wave" viewBox="0 0 1440 200">
+        <path fill="#f5f7fb" fill-opacity="1"
+        d="M0,96L80,106.7C160,117,320,139,480,138.7C640,139,800,117,960,101.3C1120,85,1280,75,1360,69.3L1440,64L1440,200L0,200Z"></path>
+    </svg>
+</section>
+
+<div class="card">
+    <h3>Buat Pengaduan Baru</h3>
+
+    <form action="/kirim_pengaduan" method="POST" enctype="multipart/form-data">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Nama Pelapor</label>
+                <input type="text" name="nama" required>
+            </div>
+
+            <div class="form-group">
+                <label>No HP</label>
+                <input type="text" name="hp" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Kategori Pengaduan</label>
+            <select name="kategori" required>
+                <option value="">-- Pilih Kategori --</option>
+                <option>Infrastruktur</option>
+                <option>Pelayanan Publik</option>
+                <option>Keamanan</option>
+                <option>Kebersihan</option>
+                <option>Lainnya</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Lokasi Kejadian</label>
+            <input type="text" name="lokasi" required>
+        </div>
+
+        <div class="form-group">
+            <label>Isi Pengaduan</label>
+            <textarea name="pengaduan" rows="5" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Upload Bukti Foto</label>
+            <input type="file" name="foto">
+        </div>
+
+        <button type="submit" class="btn-submit">Kirim Pengaduan</button>
+    </form>
+</div>
+
+<footer>
+    © 2026 Sistem Pengaduan Online Masyarakat Desa
+</footer>
+
+</body>
+</html>

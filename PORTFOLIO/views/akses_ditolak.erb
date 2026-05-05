@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>403 - Akses Ditolak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Orbitron',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:#050505;
+  overflow:hidden;
+  color:#9eff00;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+/* Neon grid background */
+body::before{
+  content:"";
+  position:absolute;
+  width:200%;
+  height:200%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,255,0,0.05) 0px,
+      rgba(0,255,0,0.05) 2px,
+      transparent 2px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,255,0,0.05) 0px,
+      rgba(0,255,0,0.05) 2px,
+      transparent 2px,
+      transparent 80px
+    );
+  animation: moveGrid 10s linear infinite;
+}
+
+@keyframes moveGrid{
+  from{ transform:translate(0,0); }
+  to{ transform:translate(-80px,-80px); }
+}
+
+/* Snake glow aura */
+.snake-glow{
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(0,255,0,0.25) 0%, transparent 70%);
+  filter:blur(80px);
+  animation:pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{ transform:scale(1); opacity:0.5; }
+  50%{ transform:scale(1.2); opacity:0.9; }
+}
+
+.card{
+  position:relative;
+  padding:60px 80px;
+  border:1px solid #1aff00;
+  border-radius:16px;
+  background:rgba(0,0,0,0.65);
+  box-shadow:
+    0 0 20px #1aff00,
+    inset 0 0 30px rgba(0,255,0,0.2);
+  z-index:2;
+  backdrop-filter: blur(8px);
+}
+
+h1{
+  font-size:90px;
+  letter-spacing:8px;
+  text-shadow:0 0 20px #39ff14;
+}
+
+h2{
+  margin-top:10px;
+  font-weight:400;
+  letter-spacing:4px;
+  color:#ccffcc;
+}
+
+p{
+  margin:25px 0 40px;
+  color:#b6ff9e;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.btn{
+  padding:14px 40px;
+  border:1px solid #39ff14;
+  background:transparent;
+  color:#9eff00;
+  text-decoration:none;
+  border-radius:30px;
+  transition:0.3s;
+  box-shadow:0 0 12px #39ff14;
+}
+
+.btn:hover{
+  background:#39ff14;
+  color:#000;
+  box-shadow:0 0 30px #39ff14;
+}
+
+/* subtle snake pattern */
+.snake-pattern{
+  position:absolute;
+  inset:0;
+  background-image:url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+  opacity:0.05;
+  z-index:1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="snake-glow"></div>
+<div class="snake-pattern"></div>
+
+<div class="card">
+  <h1>403</h1>
+  <h2>AKSES DITOLAK</h2>
+  <p>
+    Anda mencoba memasuki wilayah sistem yang tidak memiliki izin akses.<br>
+    Sistem keamanan aktif. Aktivitas Anda telah dicatat.
+  </p>
+  <a href="/" class="btn">Kembali ke Beranda</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Daftar Gagal</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+}
+
+.container{
+  text-align:center;
+  background:rgba(255,255,255,0.05);
+  padding:50px 40px;
+  border-radius:20px;
+  backdrop-filter:blur(15px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  max-width:500px;
+  width:90%;
+  animation:fadeIn 0.8s ease;
+}
+
+.icon{
+  font-size:80px;
+  margin-bottom:20px;
+  animation:shake 0.6s ease;
+}
+
+h1{
+  font-size:32px;
+  margin-bottom:15px;
+  letter-spacing:1px;
+}
+
+p{
+  font-size:16px;
+  opacity:0.9;
+  margin-bottom:30px;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  background:#ff4b5c;
+  color:white;
+  transition:0.3s;
+  box-shadow:0 8px 20px rgba(255,75,92,0.4);
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 25px rgba(255,75,92,0.6);
+}
+
+.note{
+  margin-top:20px;
+  font-size:13px;
+  opacity:0.7;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-8px);}
+  50%{transform:translateX(8px);}
+  75%{transform:translateX(-5px);}
+  100%{transform:translateX(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="icon">❌</div>
+  <h1>Pendaftaran Gagal</h1>
+  <p>
+    Data yang kamu masukkan kosong, tidak valid atau sudah terdaftar.<br>
+    Pastikan semua field terisi dengan benar dan belum pernah digunakan.
+  </p>
+
+  <a href="/#register" class="btn">Coba Daftar Lagi</a>
+
+  <div class="note">
+    Jika masalah berlanjut, hubungi admin sistem.
+  </div>
+</div>
+
+</body>
+</html>

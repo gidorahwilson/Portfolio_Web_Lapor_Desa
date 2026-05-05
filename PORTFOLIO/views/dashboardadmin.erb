@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Admin - Pengaduan</title>
+
+<style>
+*{
+    margin:0;padding:0;box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+/* SIDEBAR */
+.sidebar{
+    position:fixed;
+    width:240px;
+    height:100%;
+    background:#111827;
+    color:#fff;
+    padding:20px;
+}
+
+.sidebar h2{
+    color:#6366f1;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:10px 0;
+    transition:.2s;
+}
+
+.sidebar a:hover{
+    color:#fff;
+    padding-left:8px;
+}
+
+/* MAIN */
+.main{
+    margin-left:240px;
+    padding:20px;
+}
+
+/* HEADER */
+.header{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.header h1{
+    font-size:20px;
+    color:#334155;
+}
+
+.search-box input{
+    padding:10px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    width:250px;
+}
+
+/* FILTER */
+.filters{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.filter-btn{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#e2e8f0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:#4f46e5;
+    color:#fff;
+}
+
+/* TABLE */
+.table-card{
+    margin-top:20px;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:12px;
+    text-align:left;
+    border-bottom:1px solid #e2e8f0;
+    font-size:14px;
+}
+
+th{
+    background:#f1f5f9;
+    color:#334155;
+}
+
+.badge{
+    padding:5px 10px;
+    border-radius:6px;
+    font-size:12px;
+    color:#fff;
+}
+
+.infrastruktur{background:#3b82f6}
+.pelayanan{background:#10b981}
+.keamanan{background:#ef4444}
+.kebersihan{background:#f59e0b}
+.lainnya{background:#8b5cf6}
+
+/* BUTTON ACTION */
+.btn{
+    padding:6px 10px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.detail{background:#6366f1;color:#fff}
+.hapus{background:#ef4444;color:#fff}
+
+/* Thumbnail kecil di tabel */
+.thumb{
+  width:80px;
+  height:60px;
+  object-fit:cover;
+  cursor:pointer;
+  border-radius:6px;
+  transition:0.3s;
+}
+.thumb:hover{
+  transform:scale(1.1);
+}
+
+/* Modal fullscreen */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  left:0; top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+}
+
+.modal img{
+  display:block;
+  margin:60px auto;
+  max-width:85%;
+  max-height:85%;
+  border-radius:10px;
+  box-shadow:0 0 30px #00ff88;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>ADMIN PANEL</h2>
+    <a href="#">Pengaduan Masuk</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Dashboard Pengaduan</h1>
+        <div class="search-box">
+            <input type="text" placeholder="Cari laporan...">
+        </div>
+    </div>
+
+    <!-- FILTER -->
+    <div class="filters">
+      <button onclick="filterKategori('Semua')">Semua</button>
+      <button onclick="filterKategori('Infrastruktur')">Infrastruktur</button>
+      <button onclick="filterKategori('Pelayanan Publik')">Pelayanan Publik</button>
+      <button onclick="filterKategori('Keamanan')">Keamanan</button>
+      <button onclick="filterKategori('Kebersihan')">Kebersihan</button>
+      <button onclick="filterKategori('Lainnya')">Lainnya</button>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>HP</th>
+                    <th>Kategori</th>
+                    <th>Lokasi</th>
+                    <th>Pengaduan</th>
+                    <th>Foto</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- 🔥 CONTOH DATA (NANTI DIGANTI BACKEND SINATRA) -->
+              <% @hasil.each() do |data| %>
+                <tr data-kategori="<%= data['kategori'] %>">
+                    <td><%= data['nama'] %></td>
+                    <td><%= data['hp'] %></td>
+                    <td><span class="badge infrastruktur"><%= data['kategori'] %></span></td>
+                    <td><%= data['lokasi'] %></td>
+                    <td><%= data['pengaduan'] %></td>
+                    <td><img src="/foto/<%= data['nama'] %>"
+                         class="thumb"
+                         onclick="previewImage(this.src)">
+                    </td>
+                    <td>
+                      <a href="/hapus_lapor/<%= data['nama'] %>"><button class="btn hapus">Hapus</button></a>
+                    </td>
+                </tr>
+              <% end %>
+              <!-- IMAGE MODAL -->
+  <div id="imgModal" class="modal" onclick="closeModal()">
+    <img id="modalImg">
+  </div>
+  <script>
+function previewImage(src){
+  document.getElementById('imgModal').style.display = "block";
+  document.getElementById('modalImg').src = src;
+}
+
+function closeModal(){
+  document.getElementById('imgModal').style.display = "none";
+}
+</script>
+
+<script>
+function filterKategori(kat){
+  const rows = document.querySelectorAll("tr[data-kategori]");
+
+  rows.forEach(row => {
+    if(kat === 'Semua'){
+      row.style.display = "";
+    } else {
+      if(row.getAttribute('data-kategori') === kat){
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    }
+  });
+}
+</script>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
