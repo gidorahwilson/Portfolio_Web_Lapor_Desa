@@ -29,7 +29,9 @@ A simple web application for village complaint reporting system built with **Sin
 
 ### 1. Clone repository
 bash
+
 git clone https://github.com/gidorahwilson/Portfolio_Web_Lapor_Desa.git
+
 cd Portfolio_Web_Lapor_Desa
 
 # Screenshot
