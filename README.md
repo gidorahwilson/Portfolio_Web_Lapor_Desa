@@ -34,3 +34,6 @@ cd Portfolio_Web_Lapor_Desa
 
 # Screenshot
 ![PORTFOLIO](https://github.com/gidorahwilson/Portfolio_Web_Lapor_Desa/blob/main/PORTFOLIO/Screenshot%20from%202026-05-14%2016-07-46.png)
+![PORTFOLIO](https://github.com/gidorahwilson/Portfolio_Web_Lapor_Desa/blob/main/PORTFOLIO/Screenshot%20from%202026-05-14%2016-08-08.png)
+![PORTFOLIO](https://github.com/gidorahwilson/Portfolio_Web_Lapor_Desa/blob/main/PORTFOLIO/Screenshot%20from%202026-05-14%2016-09-17.png)
+![PORTFOLIO](https://github.com/gidorahwilson/Portfolio_Web_Lapor_Desa/blob/main/PORTFOLIO/Screenshot%20from%202026-05-14%2016-32-59.png)
